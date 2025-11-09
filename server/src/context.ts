@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import Auth from './modules/auth/auth.model';
 
-interface MyContext {
+export interface MyContext {
     user?: {
         id: string;
         email: string;
@@ -22,6 +23,8 @@ export const buildContext = async({ req }: { req: any }): Promise<MyContext> => 
 
     try {
         const decoded = jwt.verify(token, 'secret') as MyToken;
+        const user = await Auth.findById(decoded.userId);
+        if (!user) throw new Error('User not found.');
         return { user: { id: decoded.userId, email: decoded.email, role: decoded.role } };
     } catch (error) {
         return {};

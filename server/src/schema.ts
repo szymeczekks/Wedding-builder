@@ -1,10 +1,10 @@
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
-import { componentsTypeDefs } from './modules/components/components.typeDefs';
-import { componentsResolvers } from './modules/components/components.resolvers';
 import { authTypeDefs } from './modules/auth/auth.typeDefs';
 import { authResolvers } from './modules/auth/auth.resolvers';
-import { layoutTypeDefs } from './modules/layout/layout.typeDefs';
-import { layoutResolvers } from './modules/layout/layout.resolvers';
+import { widgetsTypeDefs } from './modules/widgets/widgets.typeDefs';
+import { widgetResolvers } from './modules/widgets/widgets.resolvers';
+import { websiteTypeDefs } from './modules/website/website.typeDefs';
+import { websiteResolvers } from './modules/website/website.resolvers';
 
-export const typeDefs = mergeTypeDefs([authTypeDefs, layoutTypeDefs, componentsTypeDefs]);
-export const resolvers = mergeResolvers([authResolvers, layoutResolvers, componentsResolvers]);
+export const typeDefs = mergeTypeDefs([authTypeDefs, widgetsTypeDefs, websiteTypeDefs]);
+export const resolvers = mergeResolvers([authResolvers, widgetResolvers, websiteResolvers]);
