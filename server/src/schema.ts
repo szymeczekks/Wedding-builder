@@ -5,6 +5,8 @@ import { widgetsTypeDefs } from './modules/widgets/widgets.typeDefs';
 import { widgetResolvers } from './modules/widgets/widgets.resolvers';
 import { websiteTypeDefs } from './modules/website/website.typeDefs';
 import { websiteResolvers } from './modules/website/website.resolvers';
+import { projectResolvers } from './modules/project/project.resolvers';
+import { projectTypeDefs } from './modules/project/project.typeDefs';
 
-export const typeDefs = mergeTypeDefs([authTypeDefs, widgetsTypeDefs, websiteTypeDefs]);
-export const resolvers = mergeResolvers([authResolvers, widgetResolvers, websiteResolvers]);
+export const typeDefs = mergeTypeDefs([authTypeDefs, widgetsTypeDefs, websiteTypeDefs, projectTypeDefs]);
+export const resolvers = mergeResolvers([authResolvers, widgetResolvers, websiteResolvers, projectResolvers]);

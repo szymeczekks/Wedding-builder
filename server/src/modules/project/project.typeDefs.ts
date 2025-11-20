@@ -1,7 +1,7 @@
 import { gql } from 'graphql-tag';
 
-export const websiteTypeDefs = gql`
-    type Website {
+export const projectTypeDefs = gql`
+    type Project {
         _id: ID!
         name: String!
         creator: String!
@@ -10,11 +10,11 @@ export const websiteTypeDefs = gql`
     }
 
     type Mutation {
-        createWebsite(name: String!): Website!
+        createProject: Project!
     }
 
     type Query {
-        getWebsites: [Website!]!
+        getProjects: [Project!]!
     }
 
     scalar JSON
