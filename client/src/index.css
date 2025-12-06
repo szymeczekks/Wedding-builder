@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
     --color-main: #463f3a;
-    --color-main-light: #8a817c;
+    --color-main-transparent: rgba(70, 63, 58, 0.2);
     --color-bg: #f4f3ee;
     --color-bg-dark: #bcb8b1;
     --color-special: #e0afa0;
+    --font-header: "Lora", serif;
+    --font-main: "Merriweather", serif;
+    --font-main-sans: "Montserrat", sans-serif;
 }

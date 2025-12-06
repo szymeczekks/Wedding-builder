@@ -1,9 +1,7 @@
 import { ApolloServer } from '@apollo/server';
-import { typeDefs, resolvers } from '../schema';
-import { Widget } from '../modules/widgets/widgets.model';
-import { execQuery } from '../utils/testing';
-
-jest.mock('../modules/widgets/widgets.model');
+import { typeDefs, resolvers } from '../../schema';
+import { Widget } from '../../modules/widgets/widgets.model';
+import { execQuery } from '../../utils/testing';
 
 const mockWidget = {
 	_id: '507f1f77bcf86cd799439011',

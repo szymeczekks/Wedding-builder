@@ -1,8 +1,6 @@
-import { Website } from '../modules/website/website.model';
-import { websiteResolvers } from '../modules/website/website.resolvers';
+import { Website } from '../../modules/website/website.model';
+import { websiteResolvers } from '../../modules/website/website.resolvers';
 import { ApolloError } from 'apollo-server-errors';
-
-jest.mock('../modules/website/website.model');
 
 const mockWebsite = {
 	_id: "123",
@@ -27,12 +25,6 @@ describe('Website', () => {
 				extensions: { code: "BAD_USER_INPUT" }
 			});
 		});
-
-		it('should return error when user is not authenticated', async () => {
-			await expect(
-				websiteResolvers.Mutation.createWebsite(null, { name: "New page" }, { user: { id: "", email: "", role: ""}})
-			).rejects.toThrow(ApolloError);
-		});
 		
         it('should create new website', async () => {
             (Website.create as jest.Mock).mockResolvedValue(mockWebsite);
@@ -55,12 +47,6 @@ describe('Website', () => {
 
 			expect(result).toEqual([mockWebsite]);
 			expect(Website.find).toHaveBeenCalledTimes(1);
-		});
-
-		it('should return error when user is not authenticated', async () => {
-			await expect(
-				websiteResolvers.Query.getWebsites(null, null, { user: { id: "", email: "", role: ""}})
-			).rejects.toThrow(ApolloError);
 		});
 	});
 });

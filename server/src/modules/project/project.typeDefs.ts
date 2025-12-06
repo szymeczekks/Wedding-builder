@@ -7,6 +7,8 @@ export const projectTypeDefs = gql`
         creator: String!
         sessionId: String!
         config: JSON!
+        groomName: String
+        brideName: String
     }
 
     type Mutation {
@@ -15,6 +17,7 @@ export const projectTypeDefs = gql`
 
     type Query {
         getProjects: [Project!]!
+        getProject(id: String!): Project!
     }
 
     scalar JSON
