@@ -1,4 +1,4 @@
-import { Guests } from '../../modules/guests/guests.model';
+// import { Guests } from '../../modules/guest/guest.model';
 import { Project } from '../../modules/project/project.model';
 import { projectResolvers } from '../../modules/project/project.resolvers';
 
@@ -41,7 +41,7 @@ describe('Project', () => {
 	describe('Project: create', () => {
 		it('should create new project', async () => {
 			(Project.create as jest.Mock).mockResolvedValue(mockProject);
-			(Guests.create as jest.Mock).mockResolvedValue(mockGuests);
+			// (Guests.create as jest.Mock).mockResolvedValue(mockGuests);
 
 			const result = await projectResolvers.Mutation.createProject(null, null, { user: { id: '', email: '', role: '' }, sessionId: 'test' });
 
@@ -94,13 +94,43 @@ describe('Project', () => {
 
 		it('should return project data', async () => {
             (Project.findOne as jest.Mock).mockReturnValue({
-				lean: jest.fn().mockResolvedValue(mockProjectSummary),
-			});
-            (Guests.findOne as jest.Mock).mockReturnValue({
-				lean: jest.fn().mockResolvedValue(mockGuests),
+				lean: jest.fn().mockResolvedValue(mockProject),
 			});
 
 			const result = await projectResolvers.Query.getProject(null, {id: '68c69c4344abb13b45078a60'}, { user: { id: '', email: '', role: '' }, sessionId: 'test' });
+
+			expect(result).toEqual(mockProject);
+			expect(Project.findOne).toHaveBeenCalledTimes(1);
+        });
+	});
+
+	describe('ProjectSummary: get', () => {
+		it('should throw error if id is not found', async () => {
+            await expect(projectResolvers.Query.getProjectSummary(null, {id: ''}, { user: { id: '68c69c4344abb13b45078a69', email: '', role: '' } })).rejects.toMatchObject({
+				extensions: { code: 'BAD_USER_INPUT' },
+			});
+        });
+
+		it('should return null if project not found', async () => {
+            (Project.findOne as jest.Mock).mockReturnValue({
+				lean: jest.fn().mockResolvedValue(null),
+			});
+
+			const result = await projectResolvers.Query.getProjectSummary(null, {id: '68c69c4344abb13b45078a60'}, { user: { id: '', email: '', role: '' }, sessionId: 'test' });
+
+			expect(result).toEqual(null);
+			expect(Project.findOne).toHaveBeenCalledTimes(1);
+        });
+
+		it('should return project data', async () => {
+            (Project.findOne as jest.Mock).mockReturnValue({
+				lean: jest.fn().mockResolvedValue(mockProjectSummary),
+			});
+            // (Guests.findOne as jest.Mock).mockReturnValue({
+			// 	lean: jest.fn().mockResolvedValue(mockGuests),
+			// });
+
+			const result = await projectResolvers.Query.getProjectSummary(null, {id: '68c69c4344abb13b45078a60'}, { user: { id: '', email: '', role: '' }, sessionId: 'test' });
 
 			expect(result).toEqual(mockProjectSummary);
 			expect(Project.findOne).toHaveBeenCalledTimes(1);

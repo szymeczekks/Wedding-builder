@@ -18,7 +18,7 @@ export function SummaryItem({ title, children }) {
             </div>
             <Buttton><Link className="p-2">Edytuj</Link></Buttton>
         </div>
-        <div className={`grid grid-rows-[${isOpen ? '1fr' : '0fr'}] transition-all duration-300`}>
+        <div className={`grid ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-all duration-300`}>
             <div className="overflow-hidden">
                 <hr className="text-bg-dark my-4" />
                 {children}

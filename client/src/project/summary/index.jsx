@@ -15,13 +15,11 @@ export function Summary() {
         <SectionHeader header="Podsumowanie projektu" subheader="Przeglądaj najważniejsze informacje w jednym miejscu i monitoruj postęp przygotowań." image={BrideAndGroomImage} />
         <div className="flex flex-col gap-3">
             <hr className="text-bg-dark"/>
-            {summaryItems.map((item, index) => {
+            {summaryItems.map(item => {
                 const Component = item.component;
-                return <>
-                    <SummaryItem title={item.title} >
-                        <Component />
-                    </SummaryItem>
-                </>
+                return <SummaryItem title={item.title} key={item.title}>
+                    <Component />
+                </SummaryItem>
             })}
         </div>
     </>

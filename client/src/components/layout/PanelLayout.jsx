@@ -43,7 +43,7 @@ export default function PanelLayout() {
 	return (
 		<div className='flex gap-3'>
 			<aside className=' p-2 bg-bg rounded-md border-bg-dark shadow-md shadow-(color:--color-main-transparent) transition-all h-fit sticky top-2 md:p-4'>
-				<Header className="hidden md:block">{data.getProject.name}</Header>
+				<Header className="hidden md:block">{data.getProjectSummary.name}</Header>
 				<ul>
 					{menuItems.map(item => <li key={item.value}>
 						{item.type === 'categoryName' && <Subheader className="hidden md:block">{item.value}</Subheader>}

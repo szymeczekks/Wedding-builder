@@ -15,8 +15,8 @@ export function SummaryCouple() {
 
     return <div className="flex gap-6 justify-center">
         <div className="flex flex-col gap-4 items-center justify-between">
-            {data.getProject.brideName ? 
-                <p className="font-semibold text-lg">{data.getProject.brideName}</p> : 
+            {data.getProjectSummary.brideName ? 
+                <p className="font-semibold text-lg">{data.getProjectSummary.brideName}</p> : 
                 <Buttton>
                     <Link className="p-2">Ustaw imię panny młodej</Link>
                 </Buttton>
@@ -24,8 +24,8 @@ export function SummaryCouple() {
             <img src={Bride} alt="" className="max-h-full max-w-40 w-full" />
         </div>
         <div className="flex flex-col gap-4 items-center justify-between">
-            {data.getProject.groomName ? 
-                <p className="font-semibold text-lg">{data.getProject.groomName}</p> : 
+            {data.getProjectSummary.groomName ? 
+                <p className="font-semibold text-lg">{data.getProjectSummary.groomName}</p> : 
                 <Buttton>
                     <Link className="p-2">Ustaw imię pana młodego</Link>
                 </Buttton>

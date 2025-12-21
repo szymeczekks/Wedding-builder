@@ -13,6 +13,9 @@ export const projectResolvers = {
         },
         getProject: async (_: any, { id }: { id: string }, context: MyContext) => {
             return ProjectService.getProject({ id, userId: context?.user?.id, sessionId: context?.sessionId })
+        },
+        getProjectSummary: async (_: any, { id }: { id: string }, context: MyContext) => {
+            return ProjectService.getProjectSummary({ id, userId: context?.user?.id, sessionId: context?.sessionId })
         }
     }
 };
