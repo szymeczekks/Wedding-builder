@@ -4,6 +4,7 @@ import { GuestSchema, IGuest } from "../guest/guest.model";
 export interface IGuestList {
     _id: Types.ObjectId
     name: string,
+    type: string,
     projectId: Types.ObjectId,
 }
 
@@ -25,6 +26,10 @@ const GuestListSchema = new Schema({
     name: {
         type: String,
         required: true,
+    },
+    type: {
+        type: String,
+        default: 'guests',
     }
 }, {
     timestamps: true

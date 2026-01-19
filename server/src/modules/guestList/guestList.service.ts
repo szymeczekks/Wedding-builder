@@ -32,9 +32,11 @@ export const guestListService = {
     },
     deleteGuestList: async ( guestListId: string ): Promise<DeleteGuestListOutput> => {
         if (!guestListId) throw new ApolloError('No guest list id provided.', 'BAD_USER_INPUT');
-        const deleted = await  GuestList.findByIdAndDelete( guestListId );
+        const deleted = await GuestList.findByIdAndDelete( guestListId );
 
         if (!deleted) throw new ApolloError('Guest list not found.', 'NOT_FOUND');
+
+        await Guest.deleteMany({ guestListId });
 
         return {
             _id: guestListId,

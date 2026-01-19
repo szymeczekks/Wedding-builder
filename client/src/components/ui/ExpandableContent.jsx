@@ -1,10 +1,8 @@
 import { useState } from "react";
-import ChevronDown from "../../../assets/chevron-down.svg?react";
-import Buttton from "../../../components/ui/Button";
-import { Link } from "react-router-dom";
+import ChevronDown from "../../assets/chevron-down.svg?react";
 
-export function SummaryItem({ title, children }) {
-    const [ isOpen, setIsOpen ] = useState(true);
+export function ExpandableContent({ children, title, actions }) {
+    const [ isOpen, setIsOpen ] = useState(false);
 
     const handleClick = () => {
         setIsOpen(prev => !prev);
@@ -16,7 +14,7 @@ export function SummaryItem({ title, children }) {
                 <ChevronDown className={`fill-main w-6 h-6 ${isOpen ? "rotate-180" : "rotate-0"} transition-all duration-300`}/>
                 <h4 className="font-semibold text-lg font-header">{title}</h4>
             </div>
-            <Buttton><Link className="p-2">Edytuj</Link></Buttton>
+            {actions}
         </div>
         <div className={`grid ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-all duration-300`}>
             <div className="overflow-hidden">

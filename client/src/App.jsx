@@ -6,6 +6,9 @@ import { useSession } from './hooks/useSession';
 import { Projects } from './projects';
 import { Summary } from './project/summary';
 import { Guests } from './project/guests';
+import { Ceremony } from './project/ceremony';
+import { Reception } from './project/reception';
+import { Checklist } from './project/checklist';
 
 function App() {
 	const sessionId = useSession();
@@ -23,6 +26,9 @@ function App() {
 						<Route index element={<Summary/>}/>
 						<Route path='/project/:id/summary' element={<Summary/>}/>
 						<Route path='/project/:id/guests' element={<Guests/>}/>
+						<Route path='/project/:id/ceremony' element={<Ceremony/>}/>
+						<Route path='/project/:id/reception' element={<Reception/>}/>
+						<Route path='/project/:id/checklist' element={<Checklist/>}/>
 						<Route path='/project/:id/website/:id' element={<LayoutBuilderPage />} />
 					</Route>
 				</Routes>

@@ -7,6 +7,9 @@ export const projectTypeDefs = gql`
         creator: String!
         sessionId: String!
         config: JSON!
+        ceremony: JSON!
+        reception: JSON!
+        newlyweds: [Guest!]
     }
     
     type ProjectSummary {
@@ -15,12 +18,39 @@ export const projectTypeDefs = gql`
         creator: String!
         sessionId: String!
         config: JSON!
-        groomName: String
-        brideName: String
+        newlyweds: [Guest!]
+    }
+
+    type ProjectCeremony {
+        _id: ID!
+        date: DateTime
+        location: JSON
+        description: String
+    }
+
+    input UpdateCeremonyInput {
+        date: String
+        location: JSON
+        description: String
+    }
+
+    type ProjectReception {
+        _id: ID!
+        date: DateTime
+        location: JSON
+        description: String
+    }
+
+    input UpdateReceptionInput {
+        date: String
+        location: JSON
+        description: String
     }
 
     type Mutation {
         createProject: Project!
+        updateCeremony(projectId: String!, input: UpdateCeremonyInput!): ProjectCeremony!
+        updateReception(projectId: String!, input: UpdateReceptionInput!): ProjectReception!
     }
 
     type Query {
@@ -30,4 +60,5 @@ export const projectTypeDefs = gql`
     }
 
     scalar JSON
+    scalar DateTime
 `;
