@@ -10,7 +10,7 @@ export const guestTypeDefs = gql`
         projectId: ID!
     }
 
-    type GuestDelete {
+    type Delete {
         _id: ID!
         success: Boolean!
     }
@@ -32,6 +32,6 @@ export const guestTypeDefs = gql`
     type Mutation {
         createGuest( input: CreateGuestInput ): Guest!
         updateGuest( id: ID!, updateInput: UpdateGuestInput ): Guest!
-        deleteGuest( id: ID! ): GuestDelete!
+        deleteGuest( id: ID! ): Delete!
     }
 `;

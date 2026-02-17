@@ -17,3 +17,16 @@
 .rdp-root {
     --rdp-accent-color: var(--color-special);
 }
+
+@keyframes wave-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-512px);
+  }
+}
+
+.wave-move {
+  animation: wave-move 6s linear infinite;
+}
