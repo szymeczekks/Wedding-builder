@@ -7,9 +7,26 @@
     --color-main: #463f3a;
     --color-main-transparent: rgba(70, 63, 58, 0.2);
     --color-bg: #f4f3ee;
-    --color-bg-dark: #bcb8b1;
+    --color-bg-dark: #8A817C;
     --color-special: #e0afa0;
     --font-header: "Lora", serif;
     --font-main: "Merriweather", serif;
     --font-main-sans: "Montserrat", sans-serif;
+}
+
+.rdp-root {
+    --rdp-accent-color: var(--color-special);
+}
+
+@keyframes wave-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-512px);
+  }
+}
+
+.wave-move {
+  animation: wave-move 6s linear infinite;
 }

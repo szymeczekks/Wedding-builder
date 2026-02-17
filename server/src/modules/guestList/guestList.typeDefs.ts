@@ -5,6 +5,7 @@ export const guestListTypeDefs = gql`
         _id: ID!
         projectId: String!
         name: String!
+        type: String
         guests: [Guest!]
     }
     

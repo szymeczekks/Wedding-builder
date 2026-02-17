@@ -4,6 +4,7 @@ export interface IGuest {
   _id: Types.ObjectId,
   name: string | null,
   type: string,
+  side: string,
   guestListId: Types.ObjectId
   projectId: Types.ObjectId
 }
@@ -20,6 +21,7 @@ export interface IGuestDeleteOutput {
 export const GuestSchema = new Schema({
   name: { type: String, default: null },
   type: { type: String, default: 'family' },
+  side: { type: String, default: 'PARTNER_1' },
   guestListId: { type: Schema.Types.ObjectId, ref: "GuestList", required: true },
   projectId: { type: Schema.Types.ObjectId, ref: "Project", required: true }
 }, { _id: true });
